@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeplasmaver	5.27.1
+%define		kdeplasmaver	5.27.2
 %define		qtver		5.15.2
 %define		kpname		flatpak-kcm
 
 Summary:	KDE Config Module for flatpak
 Name:		kp5-%{kpname}
-Version:	5.27.1
+Version:	5.27.2
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	421bd6678ad8709df6a86c12e67d5645
+# Source0-md5:	f8338fdc96c2d00a780a28dd2742a9a6
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -63,5 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_flatpak.so
 %{_desktopdir}/kcm_flatpak.desktop
+%dir %{_datadir}/kpackage/kcms/kcm_flatpak
+%dir %{_datadir}/kpackage/kcms/kcm_flatpak/contents
+%dir %{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui
 %{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui/main.qml
 %{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui/permissions.qml
+%{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui/KcmPopupModal.qml

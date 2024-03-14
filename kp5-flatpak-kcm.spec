@@ -1,34 +1,34 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeplasmaver	5.93.0
+%define		kdeplasmaver	5.27.10
 %define		qtver		5.15.2
 %define		kpname		flatpak-kcm
 
 Summary:	KDE Config Module for flatpak
 Name:		kp5-%{kpname}
-Version:	5.93.0
-Release:	0.1
+Version:	5.27.10
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	0b6030be3940dc2fd8152a8b719c6848
+Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
+# Source0-md5:	16e67ca215d44ec59130214ca6e13e80
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16.0
 BuildRequires:	flatpak-devel
-BuildRequires:	kf6-kauth-devel
-BuildRequires:	kf6-kconfigwidgets-devel
-BuildRequires:	kf6-kcoreaddons-devel
-BuildRequires:	kf6-ki18n-devel
-BuildRequires:	kf6-kio-devel
-BuildRequires:	kf6-kxmlgui-devel
+BuildRequires:	kf5-kauth-devel
+BuildRequires:	kf5-kconfigwidgets-devel
+BuildRequires:	kf5-kcoreaddons-devel
+BuildRequires:	kf5-ki18n-devel
+BuildRequires:	kf5-kio-devel
+BuildRequires:	kf5-kxmlgui-devel
 BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt6dir		%{_libdir}/qt6
+%define		qt5dir		%{_libdir}/qt5
 
 %description
 KDE Config Module for flatpak.
@@ -59,5 +59,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kpname}.lang
 %defattr(644,root,root,755)
-%{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_flatpak.so
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_flatpak.so
 %{_desktopdir}/kcm_flatpak.desktop
+%dir %{_datadir}/kpackage/kcms/kcm_flatpak
+%dir %{_datadir}/kpackage/kcms/kcm_flatpak/contents
+%dir %{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui
+%{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui/main.qml
+%{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui/permissions.qml
+%{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui/KcmPopupModal.qml
+%{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui/AddEnvironmentVariableDialog.qml
+%{_datadir}/kpackage/kcms/kcm_flatpak/contents/ui/TextPromptDialog.qml
